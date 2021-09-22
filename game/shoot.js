@@ -37,6 +37,7 @@ function collisions()
     bullet_collision();
     player_collision();
     player_falling();
+    ennemy_collision();
 }
 
 function bullet_collision()
@@ -80,6 +81,26 @@ function player_collision()
     if ( y > HEIGHT )
         player1.graphic.position.y -= y - HEIGHT;
 
+    if (Math.round(player1.graphic.position.x) <=  Math.round(ennemy1.graphic.position.x) + 10
+    && Math.round(Math.abs(player1.bullets[i].position.x)) >=  Math.round(ennemy1.graphic.position.x) - 10
+    && Math.round(Math.abs(player1.bullets[i].position.y)) >= -Math.round(ennemy1.graphic.position.y) - 10
+    && Math.round(Math.abs(player1.bullets[i].position.y)) <= -Math.round(ennemy1.graphic.position.y) + 10)
+    {
+        console.log("test")
+        scene.remove(player1.bullets[i]);
+        scene.remove(ennemy1.graphic);
+    }
+}
+
+function ennemy_collision()
+{
+    //collision between player and walls
+    var x = ennemy1.graphic.position.x + WIDTH / 2;
+
+    if ( x > WIDTH )
+        ennemy1.graphic.position.x -= x - WIDTH;
+    if ( x < 0 )
+        player1.graphic.position.x -= x;
 }
 
 function player_falling()

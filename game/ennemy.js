@@ -26,3 +26,22 @@ var Ennemy = function(name, color, position, direction) {
 Ennemy.prototype.dead = function () {
     this.graphic.position.z = this.graphic.position.z-0.1;
 }
+
+Ennemy.prototype.move = function () {
+    var moveTo = new THREE.Vector3(
+        this.speed * Math.cos(this.direction) + this.position.x,
+        this.graphic.position.z
+    );
+
+    this.position = moveTo;
+
+    if (this.speed > 0) {
+        this.speed = this.speed - 10;
+    }
+    else if (this.speed < 0) {
+        this.speed = this.speed + 10;
+    }
+
+    this.graphic.position.x = this.position.x;
+    
+};
