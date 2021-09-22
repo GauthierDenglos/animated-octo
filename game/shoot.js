@@ -51,8 +51,17 @@ function bullet_collision()
             player1.bullets.splice(i, 1);
             i--;
         }
-    }
 
+        if (Math.round(Math.abs(player1.bullets[i].position.x)) <=  Math.round(ennemy1.graphic.position.x) + 10
+        && Math.round(Math.abs(player1.bullets[i].position.x)) >=  Math.round(ennemy1.graphic.position.x) - 10
+        && Math.round(Math.abs(player1.bullets[i].position.y)) >= -Math.round(ennemy1.graphic.position.y) - 10
+        && Math.round(Math.abs(player1.bullets[i].position.y)) <= -Math.round(ennemy1.graphic.position.y) + 10)
+        {
+            console.log("test")
+            scene.remove(player1.bullets[i]);
+            scene.remove(ennemy1.graphic);
+        }
+    }
 }
 
 function player_collision()
