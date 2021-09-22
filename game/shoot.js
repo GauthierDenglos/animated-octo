@@ -82,13 +82,16 @@ function player_collision()
         player1.graphic.position.y -= y - HEIGHT;
 
     if (Math.round(player1.graphic.position.x) <=  Math.round(ennemy1.graphic.position.x) + 10
-    && Math.round(Math.abs(player1.bullets[i].position.x)) >=  Math.round(ennemy1.graphic.position.x) - 10
-    && Math.round(Math.abs(player1.bullets[i].position.y)) >= -Math.round(ennemy1.graphic.position.y) - 10
-    && Math.round(Math.abs(player1.bullets[i].position.y)) <= -Math.round(ennemy1.graphic.position.y) + 10)
+    && Math.round(Math.abs(player1.graphic.position.x)) >=  Math.round(ennemy1.graphic.position.x) - 10
+    && Math.round(Math.abs(player1.graphic.position.y)) >= -Math.round(ennemy1.graphic.position.y) - 10
+    && Math.round(Math.abs(player1.graphic.position.y)) <= -Math.round(ennemy1.graphic.position.y) + 10)
     {
         console.log("test")
-        scene.remove(player1.bullets[i]);
-        scene.remove(ennemy1.graphic);
+        player1.life -= 1
+        if (player1.life == 0)
+        {
+            player1.dead();
+        }
     }
 }
 
