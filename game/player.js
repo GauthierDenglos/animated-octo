@@ -51,13 +51,15 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
+    //TODO 1
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), -angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
+    //TODO 1
     this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
 };
 
 Player.prototype.move = function () {

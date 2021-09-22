@@ -48,7 +48,11 @@ function Ground(color, size_x, size_y, nb_tile)
         for (y = minY; y <= maxY; y = y+sizeOfTileY){
 
             color = colors[Math.floor(Math.random()*colors.length)];
-       
+            //TODO 5
+            if (x == sizeOfTileX && y == 0)
+            {
+                color = 0xff0000
+            }
             if (0x000000 != color)
             {
                 tmpGround = new THREE.Mesh(
@@ -66,7 +70,8 @@ function Ground(color, size_x, size_y, nb_tile)
 
 function Light(name, color, position)
 {
-    pointLight = new THREE.PointLight(color, 50, 350);
+    //TODO 2
+    pointLight = new THREE.PointLight(color, 50, 1000);
 
     pointLight.position.x = position.split(',')[0];
     pointLight.position.y = position.split(',')[1];
